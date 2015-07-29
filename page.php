@@ -1,4 +1,5 @@
 	<?php get_header(); ?>
+	<div class="hidden-xs hidden-sm">
 	<?
 		// select subheader with menu
 		
@@ -8,11 +9,12 @@
 		else { $first_parent = get_page($parent[0]); }
 		$praancestor_id = $first_parent->ID;
 		
+		//load Submenu
 		if ($praancestor_id == '171') get_sidebar('ls-menu');
 		if ($praancestor_id == '167') get_sidebar('gz-menu');
 		
 	?>
-	
+	</div>
 	<section>
 
 	<div class="">

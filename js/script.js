@@ -1,5 +1,16 @@
 jQuery(document).ready(function($) {
 
+	// кнопка мобильного меню
+	
+	$('.navbar-toggle').click( function() {
+		console.log($('.wrap').css('left') );
+		if  ( $('.wrap').css('left') == '0px' ) {
+			$('.wrap').css('left', '80%');
+		}else{
+			$('.wrap').css('left', '0px');
+		}
+	});
+
 	// слайдер на главной
 	var owl = $('.owl-front-page');
 	owl.owlCarousel( {

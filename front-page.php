@@ -3,7 +3,7 @@
 	<section class="global">
 		  <div class="container">
 			<div class="row">
-				<div class="col-sm-5 col-md-4 col-lg-3">
+				<div class="col-sm-5 col-md-4 col-lg-3 col-xs-12">
 					<div class="well catalog">
 						<nav>
 							<h3>Каталог товарiв</h3>
@@ -29,10 +29,10 @@
 									);
 									$childs = get_terms( 'product_type', $args );
 									
-									// обнуляем итератор и таблицу
-									$iter = -1;
-									$table = '';
 									if ($childs) { // если таки потомки имеются
+										// обнуляем итератор и таблицу
+										$iter = -1;
+										$table = '';
 										$table .= '<table class="children"><td>'; //создаём таблицу и открываем ячейку таблицы
 										
 										// перебираем потомков
@@ -49,7 +49,7 @@
 										} 
 										$table.='</td></table>'; //Закрываем последнюю ячейку и таблицу
 									}
-									// дальше выводим в элементе списка ссылку для первого уровня и все ячейки дочернего второго уровня, завёрнутые в тэйбл
+									// дальше выводим в элементе списка ссылку для первого уровня и все ячейки дочернего второго уровня, заранее завёрнутые в тэйбл
 									echo '
 									<li class="'.$item->slug.'">
 										<a href="/product_type/'.$item->slug.'">
@@ -66,7 +66,7 @@
 						</nav>
 					</div>
 				</div>
-				<div class="col-sm-7 col-md-8 col-lg-9 hidden-xs">
+				<div class="col-sm-7 col-md-8 col-lg-9 col-xs-12">
 					<?php
 					$carousel = get_posts('post_type=carousel');
 					if ($carousel):

@@ -1,70 +1,70 @@
 	<?php get_header(); ?>
   
 	<section class="fc">
-	<div class="container catalog">
-	<nav>
-		<ul class="toplist htable_menu">
-		<?php
-		// придётся эти макароны комментировать, иначе трындец
-		// кхм.. — Скрипт Вывода Верхнего Меню Категорий Товаров Для Внутренних Страниц
-		
-			// тут мы получаем список терминов первого уровеня типов
-			$args = array(
-				'hide_empty' => false,
-				'parent' => 0,
-				'orderby' => 'id'
-				);
-			$menu = get_terms( 'product_type', $args );
+	<div class="container catalog hidden-sm hidden-xs">
+		<nav>
+			<ul class="toplist htable_menu">
+			<?php
+			// придётся эти макароны комментировать, иначе трындец
+			// кхм.. — Скрипт Вывода Верхнего Меню Категорий Товаров Для Внутренних Страниц
 			
-			// разбираем первый уровень
-			$counter = 0; //счётчик используется ниже, дабы отделить первый элемент
-			foreach( $menu as $item) {
-				// получаем для каждого пункта потомков (второй уровень)
+				// тут мы получаем список терминов первого уровеня типов
 				$args = array(
 					'hide_empty' => false,
-					'parent' => $item->term_id,
-					'orderby' => 'name',
-					'order' => 'ASC'
-				);
-				$childs = get_terms( 'product_type', $args );
+					'parent' => 0,
+					'orderby' => 'id'
+					);
+				$menu = get_terms( 'product_type', $args );
 				
-				// обнуляем итератор и таблицу
-				$iter = -1;
-				$table = '';
-				if ($childs) { // если таки потомки имеются
-					$table .= '<table class="children"><td>'; //создаём таблицу и открываем ячейку таблицы
+				// разбираем первый уровень
+				$counter = 0; //счётчик используется ниже, дабы отделить первый элемент
+				foreach( $menu as $item) {
+					// получаем для каждого пункта потомков (второй уровень)
+					$args = array(
+						'hide_empty' => false,
+						'parent' => $item->term_id,
+						'orderby' => 'name',
+						'order' => 'ASC'
+					);
+					$childs = get_terms( 'product_type', $args );
 					
-					// перебираем потомков
-					foreach($childs as $child) { 
-						$iter++;
-						if ( $iter == 14 ) {
-							$table .= '</td><td>'; // если итератор кратен 14 закрываем ячейку и начинаем новую
-							$iter = -1;	
-							}
-						$table .= ' 
-							<a href="/product_type/'.$child->slug.'">'.$child->name.'</a>
-						'; // таки добавляем ссылку
+					// обнуляем итератор и таблицу
+					$iter = -1;
+					$table = '';
+					if ($childs) { // если таки потомки имеются
+						$table .= '<table class="children"><td>'; //создаём таблицу и открываем ячейку таблицы
 						
-					} 
-					$table.='</td></table>'; //Закрываем последнюю ячейку и таблицу
+						// перебираем потомков
+						foreach($childs as $child) { 
+							$iter++;
+							if ( $iter == 14 ) {
+								$table .= '</td><td>'; // если итератор кратен 14 закрываем ячейку и начинаем новую
+								$iter = -1;	
+								}
+							$table .= ' 
+								<a href="/product_type/'.$child->slug.'">'.$child->name.'</a>
+							'; // таки добавляем ссылку
+							
+						} 
+						$table.='</td></table>'; //Закрываем последнюю ячейку и таблицу
+					}
+					
+					//if($counter++ > 0) {echo '<li class="delim"></li>';}
+					// дальше выводим в элементе списка ссылку для первого уровня и все ячейки дочернего второго уровня, завёрнутые в тэйбл
+					echo '
+					<li class="'.$item->slug.'">
+						<a href="/product_type/'.$item->slug.'">
+							'.$item->name.' 
+						</a>
+						
+						'.$table.'
+						
+					</li>
+					';
 				}
-				
-				//if($counter++ > 0) {echo '<li class="delim"></li>';}
-				// дальше выводим в элементе списка ссылку для первого уровня и все ячейки дочернего второго уровня, завёрнутые в тэйбл
-				echo '
-				<li class="'.$item->slug.'">
-					<a href="/product_type/'.$item->slug.'">
-						'.$item->name.' 
-					</a>
-					
-					'.$table.'
-					
-				</li>
-				';
-			}
-		?>
-		</ul>
-	</nav>
+			?>
+			</ul>
+		</nav>
 	</div>
 	</section>
 
