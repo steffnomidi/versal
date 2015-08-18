@@ -1,0 +1,151 @@
+.tablepress-table-description {
+	padding: 0 0 1em;
+	font-size: 22px;
+	color: #666666;
+	}
+.tablepress-table-description:before {
+    content: "Примітка:";
+    font-size: 26px;
+    font-style: italic;
+    width: inherit;
+    display: block;
+	color: #666666;
+	padding: 0 0 10px;
+}
+
+.tablepress td.column-1{
+	text-align: left;
+}
+.tablepress td[colspan="2"] {
+	width: 50%;
+}
+
+.tablepress td,
+.tablepress th {
+	font-size: 25px !important;
+	color: #666666;
+	padding: 8px;
+	border: none;
+	background: 0 0;
+	text-align: left;
+	float: none;
+}
+
+.tablepress tbody td {
+	vertical-align: top;
+}
+
+.tablepress tbody td,
+.tablepress tfoot th {
+	border-top: 1px solid #ddd;
+}
+
+.tablepress tbody tr:first-child td {
+	border-top: 0;
+}
+
+.tablepress thead th {
+	border-bottom: 1px solid #e6e6e6 !important;
+	border-top: 1px solid #ddd !important;
+}
+
+.tablepress tfoot th,
+.tablepress thead th {
+	background-color: transparent;
+	font-weight: normal;
+	color: #339933;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 28px !important;
+}
+
+.tablepress .odd td {
+	background-color: #f9f9f9;
+}
+
+.tablepress .even td {
+	background-color: #fff;
+}
+
+.tablepress .row-hover tr:hover td {
+	background-color: #f3f3f3;
+}
+
+.tablepress img {
+	margin: 0;
+	padding: 0;
+	border: none;
+	max-width: none;
+}
+
+@media ( max-width: 1199px ) {
+	.tablepress {
+		width: inherit;
+	}
+	.tables h2{
+		font-size: 25px !important;
+		padding: 14 0 6px;
+	}
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 16px;
+	}
+	.tablepress td,
+	.tablepress th {
+		font-size: 18px !important;
+	}
+	
+	.tablepress tfoot th,
+	.tablepress thead th  {
+		font-size: 24px !important;
+	}
+	.tablepress-table-description {
+		font-size: 18px;	
+	}
+	.tablepress-table-description:before {
+		font-size: 20px;
+		padding: 0 0 10px;
+	}
+}
+
+@media ( max-width: 991px ) {
+	.tables h2{
+		font-size: 25px !important;
+		padding: 10 0 5px;
+	}
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 14px;
+	}
+	.tablepress td,
+	.tablepress th {
+		font-size: 16px !important;
+		padding: 5px !important;
+	}
+	
+	.tablepress tfoot th,
+	.tablepress thead th  {
+		font-size: 17px !important;
+	}
+
+	.tablepress-table-description:before {
+		font-size: 18px;
+		padding: 0 0 10px;
+	}
+}
+@media ( max-width: 450px ) {
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 12px;
+	}
+	.tablepress tfoot th,
+	.tablepress thead th  {
+		font-size: 15px !important;
+	}
+	.tablepress td,
+	.tablepress th {
+		font-size: 12px !important;
+		padding: 3px !important;
+	}
+}
+

@@ -4,7 +4,7 @@ Version: 0.1 (dev)
 Author: steffnomidi
 Custom break: 450px
 */
-
+@import "css/price-table-styles.css";
 @font-face{
    font-family:'SegoeUI';
    src:url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Normal/latest.eot');
@@ -56,14 +56,14 @@ header hr {
 
 /* button */
 .navbar-toggle {
-    cursor: pointer;
+	cursor: pointer;
     position: relative;
     line-height: 0;
     float: left;
     margin: 0;
-    width: 60px;
+    width: 35px;
     height: 60px;
-    padding: 30px 20px;
+    padding: 30px 5px;
     border: 0;
     background: transparent;
 }
@@ -71,51 +71,95 @@ header hr {
 	background: #ccc;
 }
 
-/* menu */
+/* mobile menu */
 .mobile-menu {
 	height: 100%;
-	width: 80%;
+	width: 100%;
 	position: absolute;
-	left: -80%;
-	background: #ccc;
+	right: -100%;
+	background: #fff;
 	color: #000;
-	padding: 10% 5%;
+	padding: 0;
 	z-index: 100;
 	overflow-x: hidden;
+	display: none;	
 }
-.mobile-menu ul {
+.mobile-menu .menu ul {
 	padding: 2px;
 	list-style: none; 
 	margin: 0;
 	background: transparent;
 }
-.mobile-menu ul li ul li{ 
-	padding-left: 12px;
+.mobile-menu .menu  ul li ul li{ 
+	padding-left: 1em;
+	font-size: .8em;
 }
-.mobile-menu ul li {
+.mobile-menu .menu  ul>li>ul {
+	display: none;
+}
+.mobile-menu .menu  ul>li.current_page_item>ul,
+.mobile-menu .menu  ul>li.current_page_ancestor>ul{
 	display: block;
-	padding: 2px;
 }
-.mobile-menu ul li a {
+.mobile-menu .menu  ul>li>ul>li>ul {
+	display: none;
 }
-.mobile-menu a {
-	font-size: 16px;
-	padding: 2px 5px;
+.mobile-menu .menu  ul>li>ul>li.current_page_item>ul,
+.mobile-menu .menu  ul>li>ul>li.current_page_ancestor>ul{
+	display: block;
+}
+.mobile-menu .menu  ul li {
+	display: block;
+	padding: 2px 0 2px 2px;
+	line-height: 2em;
+}
+.mobile-menu .menu>ul>li {
+	border-bottom: 1px solid #eee;
+	font-size: 27px;
+	}
+.mobile-menu .menu  ul li ul li ul li a {
+	line-height: 1.4em;
+	padding-left: .85em;
+}
+.mobile-menu .menu  a {
+	padding: 2px 15% 2px 5px;
 	color: #666666;
 	display: block;
 }
-.mobile-menu li.current_page_item>a,
-.mobile-menu li.current_page_ancestor>a
+
+.mobile-menu .menu li.current_page_item>a,
+.mobile-menu .menu li.current_page_ancestor>a,
+.mobile-menu .menu  a:hover 
 {
 	color: #339933;
 }
-.mobile-menu li.current_page_item>a{
-	background: rgba(255,255,255,.7);
+.mobile-menu .menu ul li.page_item_has_children {
+	background: url(images/shevron.png) no-repeat 90% 28px;
 }
-.mobile-menu a:hover {
-	background: rgba(255,255,255,1);
+.mobile-menu .menu ul li.current_page_ancestor {
+	background: url(images/shevron-active.png) no-repeat 90% 28px;
 }
-
+.mobile-menu .menu ul li.page_item_has_children.opened {
+	background: url(images/shevron-opened.png) no-repeat 90% 28px;
+}
+.mobile-menu .menu ul li.current_page_ancestor.opened  {
+	background: url(images/shevron-active-opened.png) no-repeat 90% 28px;
+}
+.mobile-menu .cross {
+    width: 26px;
+    height: 26px;
+    background-image: url(images/cross.png);
+    display: block;
+}
+.mobile-menu .navbar-toggle {
+	display: block;
+}
+.mobile-menu .page_item { background-repeat: no-repeat; background-position: 0 7px;}
+.mobile-menu .page_item.page-item-184 { background-image: url(images/icon-pochat.png); }
+.mobile-menu .page_item.page-item-182 { background-image: url(images/icon-project.png); }
+.mobile-menu .page_item.page-item-186 { background-image: url(images/icon-pidgot.png); }
+.mobile-menu .page_item.page-item-188 { background-image: url(images/icon-posad.png); }
+.mobile-menu .page_item.page-item-190 { background-image: url(images/icon-dodat.png); }
 
 /* other global styles */
 
@@ -129,7 +173,7 @@ li>a:hover, li>a:focus, td>a:hover, td>a:focus {
 	text-decoration: none;
 	color: #339933;
 }
-li:hover>a, li:focus>a {
+.catalog li:hover>a, .catalog li:focus>a {
 	text-decoration: none;
 	color: #339933;
 }
@@ -158,19 +202,30 @@ h1:after {
 .htable_menu {
 	display: table;
 	width: 100%;
-	padding-left: 20px;
+	padding-left: 0;
 	font-size: 20px;
 	white-space: nowrap;
 }
 .htable_menu>*{
 	display: table-cell;
 	text-align: center;
-	position: relative;
 	border-right: 1px solid #ccc;
+	width: 1%;
+	position: relative;
+	width: 0\9;
 }
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { /* hack ie 10 - 11 */
+	.htable_menu>*{
+		width: 0;
+	}
+}
+
+
 .htable_menu>*:last-child{
 	border: 0;
 }
+
+
 .htable_menu>*.delim{
 	height: 1.4em;
 	margin: 0 20px;
@@ -198,7 +253,6 @@ h1:after {
 }
 .well.subcat .thumb {
 	position: relative;
-	margin-bottom: 10px;
 }
 .well.subcat .thumb img {
 	width: 100%;
@@ -214,6 +268,10 @@ h1:after {
 	padding: 3px;
 	margin-bottom: 0;
 }
+.well.subcat .table {
+	margin-top: 10px;
+}
+
 .well.subcat .table>thead>tr>th,
 .well.subcat .table>tbody>tr>td {
 	padding: 3px;
@@ -271,8 +329,8 @@ h1:after {
 }
 
 .catalog ul.mainlist>li>a, .catalog ul.toplist>li>a{
-background-repeat: no-repeat;
-background-position: 1px 11px;
+	background-repeat: no-repeat;
+	background-position: 1px 11px;
 }
 
 .catalog ul.toplist {
@@ -282,12 +340,12 @@ background-position: 1px 11px;
 	padding: 0 15px;
 }
 
-.catalog ul>li.listyani>a { background-image: url(images/icon-listyani.png) ;}
-.catalog ul>li.hvojni>a { background-image: url(images/icon-hvojni.png) ;}
-.catalog ul>li.plodovi>a { background-image: url(images/icon-plodovi.png) ;}
-.catalog ul>li.bagatorichniki>a { background-image: url(images/icon-bagatorichniki.png) ;}
-.catalog ul>li.troyandi>a { background-image: url(images/icon-troyandi.png) ;}
-.catalog ul>li.suputni-tovari>a { background-image: url(images/icon-suputni-tovari.png) ;}
+.catalog ul>li.listyani>a {			background-image: url(images/icon-listyani.png) ;}
+.catalog ul>li.hvojni>a {			background-image: url(images/icon-hvojni.png) ;}
+.catalog ul>li.plodovi>a {			background-image: url(images/icon-plodovi.png) ;}
+.catalog ul>li.bagatorichniki>a {	background-image: url(images/icon-bagatorichniki.png) ;}
+.catalog ul>li.troyandi>a {			background-image: url(images/icon-troyandi.png) ;}
+.catalog ul>li.suputni-tovari>a {	background-image: url(images/icon-suputni-tovari.png) ;}
 
 .catalog ul { position: relative; }
 .catalog a {
@@ -307,7 +365,18 @@ background-position: 1px 11px;
 	background-position: 1px 3px;
 	padding: 0px 10px 0px 30px;
 	}
+.catalog ul.toplist a.active {
+	color: #339933;
+}	
 
+.catalog ul.toplist>li .children a {
+	border-bottom: 1px solid #ccc;
+}
+.catalog ul.toplist>li .children a:last-child {
+	border: none;
+}
+	
+	
 .htable_menu a {
 	border: 0;
 	margin: 0 7px 0;
@@ -342,11 +411,19 @@ background-position: 1px 11px;
 	background-position: 0 1px;
 	background-repeat: no-repeat;
 }
+@media ( max-width: 1199px ) {
+	.htable_menu.big a{
+		font-size: 40px;
+	}
+}
+
+
 
 /* styles for submenu in pages */
 
 .gz-menu .htable_menu li, .ls-menu .htable_menu li {
     border-right: #ccc solid 1px;
+	width: 1%;
 }
 .gz-menu .htable_menu :last-child, .ls-menu .htable_menu :last-child {
     border: 0;
@@ -371,15 +448,20 @@ background-position: 1px 11px;
 	text-align: left;
 }
 
+@media (max-width: 767px) {
+	.catalog li table.children {
+		display: none;
+	}
+}
+
 .catalog .htable_menu li table.children {
 	left: 0px; top: 100%;	
 	height: auto;
 }
 .catalog li table.children td{
 	vertical-align: top;
-	background: url(images/tdline.png) 0px -100% no-repeat;
-	padding: 0 15px;
-	
+	padding: 0;
+	white-space: nowrap;
 }
 .catalog li table.children td:first-child{
 	background: #fff;
@@ -390,9 +472,24 @@ background-position: 1px 11px;
 	opacity: 1;
 }
 
-.catalog li table.children a{
-	font-size: 15px;
-	padding: 1px 3px;
+.catalog li table.children tbody {
+	display: block;
+	margin: 4px 0;
+}
+
+.catalog li table.children a {
+    font-size: 15px;
+	line-height: 21px;
+    padding: 0px 10px 2px;
+    margin: 0 8px 0.3px;
+}
+.catalog li table.children td.delim {
+	margin: 3px 0;
+	width: 1px;
+	background-color: #ccc;
+}
+.catalog li table.children td.delim hr{
+	width: 1px;
 }
 
 
@@ -549,8 +646,8 @@ background-position: 1px 11px;
 	height:100%;
 	min-height:100%;
 	position:relative;
-	transition: left .5s;
-	left: 0%; /**/
+	transition: right .5s;
+	right: 0%; /**/
 }
 .empty {
 	height:80px; /* равняется высоте футера */
@@ -574,6 +671,14 @@ background-position: 1px 11px;
 }
 #footer .row {
 	margin-top: 22px;
+}
+#footer a{
+	color: #666666;
+	transition: color .2s;
+}
+#footer a:hover, #footer a:focus {
+	color: #339933;
+	text-decoration: none;
 }
 
 /* cover for styles table */
@@ -606,7 +711,7 @@ background-position: 1px 11px;
 
 
 
-/* tables for pages of services price */
+/* tables for pages of services prices */
 
 .tables h2{
 	color: #666666;
@@ -616,83 +721,36 @@ background-position: 1px 11px;
 }
 .tables .post-table {
 	background: #ffffff;
+	margin: 10px 0 30px;
 }
-.tablepress-table-description {
-	padding: 0 0 1em;
-	font-size: 22px;
-	color: #666666;
+
+
+@media ( max-width: 1199px ) {
+
+	.tables h2{
+		font-size: 23px !important;
+		padding: 14 0 6px;
 	}
-.tablepress-table-description:before {
-    content: "Примітка:";
-    font-size: 26px;
-    font-style: italic;
-    width: 100%;
-    display: block;
-	color: #666666;
-	padding: 0 0 10px;
+	.tables table tfoot th span, .tables table thead th span {
+		font-size: 20px;
+	}
+
 }
 
-.tablepress td.column-1{
-	text-align: left;
+@media ( max-width: 991px ) {
+	.tables h2{
+		font-size: 20px !important;
+		padding: 10 0 5px;
+	}
+	.tables table tfoot th span, .tables table thead th span {
+		font-size: 18px;
+	}
+}
+@media ( max-width: 450px ) {
+
 }
 
-.tablepress td,
-.tablepress th {
-	font-size: 25px !important;
-	color: #666666;
-	padding: 8px;
-	border: none;
-	background: 0 0;
-	text-align: left;
-	float: none !important;
-}
 
-.tablepress tbody td {
-	vertical-align: top;
-}
-
-.tablepress tbody td,
-.tablepress tfoot th {
-	border-top: 1px solid #ddd;
-}
-
-.tablepress tbody tr:first-child td {
-	border-top: 0;
-}
-
-.tablepress thead th {
-	border-bottom: 1px solid #e6e6e6 !important;
-	border-top: 1px solid #ddd !important;
-}
-
-.tablepress tfoot th,
-.tablepress thead th {
-	background-color: transparent;
-	font-weight: normal;
-	color: #339933;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 28px !important;
-}
-
-.tablepress .odd td {
-	background-color: #f9f9f9;
-}
-
-.tablepress .even td {
-	background-color: #fff;
-}
-
-.tablepress .row-hover tr:hover td {
-	background-color: #f3f3f3;
-}
-
-.tablepress img {
-	margin: 0;
-	padding: 0;
-	border: none;
-	max-width: none;
-}
 
 /* portfolio gallery */
 .portfolio {

@@ -8,10 +8,12 @@
 	
 	echo '<ul class="htable_menu">';
 	
+	$iter = 0;
 	foreach ($childs as $child) :
 	
 	//print_r($child); print_r($post);
 		if ($post->ID == $child->ID) {$itemclass = ' class="current_page_item"';} else {$itemclass = '';}
+
 		?>
 		
 		<li<?php echo $itemclass; ?>>

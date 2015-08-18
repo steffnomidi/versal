@@ -16,8 +16,8 @@
 					
 					<ul class="contacts">
 						<li class="address"><?php echo get_field('address'); ?></li>
-						<li class="email"><?php echo get_field('email'); ?></li>
-						<li class="facebook"><?php echo get_field('facebook'); ?></li>
+						<li class="email"><a href="mailto:<?php echo get_field('email'); ?>"><?php echo get_field('email'); ?></a></li>
+						<li class="facebook"><a href="http://<?php echo get_field('facebook'); ?>"><?php echo get_field('facebook'); ?></a></li>
 						<li class="phones"><?php echo get_field('phones'); ?></li>
 					</ul>
 					

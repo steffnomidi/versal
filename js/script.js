@@ -3,11 +3,12 @@ jQuery(document).ready(function($) {
 	// кнопка мобильного меню
 	
 	$('.navbar-toggle').click( function() {
-		console.log($('.wrap').css('left') );
-		if  ( $('.wrap').css('left') == '0px' ) {
-			$('.wrap').css('left', '80%');
+		console.log($('.wrap').css('right') );
+		if  ( $('.wrap').css('right') == '0px' ) {
+			$('.mobile-menu').css('display', 'block')
+			$('.wrap').css('right', '100%');
 		}else{
-			$('.wrap').css('left', '0px');
+			$('.wrap').css('right', '0px');
 		}
 	});
 
@@ -40,4 +41,27 @@ jQuery(document).ready(function($) {
 			$('.thumb').removeClass('active');
 			$('.thumb[data-owlid='+index+']').addClass('active');
 		})	
+		
+		
+	// мобильная менюжка — аккордион.
+	
+	$('.mobile-menu .page_item_has_children>a').click( function() {
+		$(this).parent().children('ul').slideToggle();
+		$(this).parent().toggleClass('opened');
+		return false;
+	});
+		
+		
+	$('.mobile-menu .current_page_ancestor').addClass('opened');
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	});

@@ -48,7 +48,7 @@ function product_custom_type() {
 	$args = array(
 		'label'               => 'product',
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail', 'editor' ),
+		'supports'            => array( 'title', 'thumbnail', 'editor', 'author' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
@@ -146,3 +146,16 @@ function carousel_custom_type() {
 // Hook into the 'init' action
 add_action( 'init', 'carousel_custom_type', 0 );
 
+/* add css for admin editing page */
+
+
+add_action( 'admin_head', 'admin_css' );
+
+function admin_css(){ ?>
+     <style>
+		table.acf_input tbody tr td.label {
+			width: 100px;
+		}
+     </style>
+<?php
+}

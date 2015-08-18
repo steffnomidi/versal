@@ -21,29 +21,42 @@
 								$menu = get_terms( 'product_type', $args );
 								
 								// разбираем первый уровень
-								foreach( $menu as $item) {
-									// получаем для каждого пункта потомков (второй уровень)
-									$args = array(
-										'hide_empty' => false,
-										'parent' => $item->term_id,
-									);
-									$childs = get_terms( 'product_type', $args );
+									$counter = 0; //счётчик используется ниже, дабы отделить первый элемент
+									foreach( $menu as $item) {
+										
 									
-									if ($childs) { // если таки потомки имеются
+										// получаем для каждого пункта список товаров (второй уровень)
+										$args = array(
+											'posts_per_page' => -1,
+											'post_type' => 'product',
+											'hide_empty' => false,
+											'tax_query' => array(
+												array(
+													'taxonomy' => 'product_type',
+													'field'    => 'id',
+													'terms'    => $item->term_id,
+												),
+											),
+											'orderby' => 'name',
+											'order' => 'ASC'
+										);
+										$prods = get_posts( $args );
+										$table = '';										
+									if ($prods) { // если таки потомки имеются
 										// обнуляем итератор и таблицу
 										$iter = -1;
-										$table = '';
+
 										$table .= '<table class="children"><td>'; //создаём таблицу и открываем ячейку таблицы
 										
 										// перебираем потомков
-										foreach($childs as $child) { 
+										foreach($prods as $prod) { 
 											$iter++;
 											if ( $iter == 14 ) {
-												$table .= '</td><td>'; // если итератор кратен 14 закрываем ячейку и начинаем новую
+												$table .= '</td><td class="delim"><hr /></td><td>'; // если итератор = 14 закрываем ячейку, вставляем ячейку с отбивкой и начинаем новую ячейку
 												$iter = -1;	
 												}
 											$table .= ' 
-												<a href="/product_type/'.$child->slug.'">'.$child->name.'</a>
+												<a href="/product/'.$prod->post_name.'">'.$prod->post_title.'</a>
 											'; // таки добавляем ссылку
 											
 										} 
@@ -66,7 +79,7 @@
 						</nav>
 					</div>
 				</div>
-				<div class="col-sm-7 col-md-8 col-lg-9 col-xs-12">
+				<div class="col-sm-7 col-md-8 col-lg-9 hidden-xs">
 					<?php
 					$carousel = get_posts('post_type=carousel');
 					if ($carousel):

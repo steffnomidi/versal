@@ -14,7 +14,10 @@ $args = array(
 	'title_li'     => '', 
 	'walker'       => new Walker_Page
 ); 
-$childs = wp_list_pages( $args );	
+$childs = wp_list_pages( $args );
+
+
+
 echo $childs;
 
 	?>
@@ -42,21 +45,26 @@ if (count($parent) != 0 ) { // если есть родители
 		);
 	
 	echo '<ul class="htable_menu with-icons">';
-	
+	$iter = 0;
 	foreach ($childs as $child) :
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($child->ID), 'full' );
 		$icon_image = $thumb['0']; 
 		$current_page_item = '';
 		if ( $child->ID == get_the_ID() ) { $current_page_item = ' class="current_page_item"'; }
+
+
+
 		?>
 		
 		<li<?php echo $current_page_item; ?>>
 			<a href="<?php echo get_permalink($child->ID) ?>" style= "background-image: url(<?php echo $icon_image; ?>)">
 				<?php echo $child->post_title ?>
 			</a>
-		</li>
+		</li> 
 		
 		<?php
+
+		
 		
 	endforeach; // childs
 	

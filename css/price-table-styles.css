@@ -1,0 +1,216 @@
+/* cover for styles table */
+.table { margin-bottom: 0; }
+.table>tbody>tr>td,
+.table>thead>tr>th{
+	border: 1px solid #ccc;
+	border-bottom: 0; border-left: 0;
+	padding-left: 15px;
+	padding-right: 14px;
+	text-align: center;
+	font-size: 16px;
+}
+.table>tbody>tr>td:last-child, .table>thead>tr>th:last-child{
+	border-right: 0;
+}
+.table>tbody>tr>td>span, .table>thead>tr>th>span {
+	border-bottom: 1px solid #ccc;
+	display: block;
+	padding-bottom: 15px;
+}
+.table>tbody>tr:last-child>td>span {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+.table>thead>tr>th{ color: #339933;}
+
+
+
+/* tables for pages of services prices */
+
+.tables h2{
+	color: #666666;
+	text-align: center;
+	font-size: 30px;
+    padding-bottom: 25px;
+}
+.tables .post-table {
+	background: #ffffff;
+}
+.tables .description {
+	padding: 0 0 1em;
+	font-size: 22px;
+	color: #666666;
+	}
+.tables .description:before {
+    content: "Примітка:";
+    font-size: 26px;
+    font-style: italic;
+    width: inherit;
+    display: block;
+	color: #666666;
+    padding: 0 0 0.1em;
+}
+.tables table, .tables table tr {
+	height: 100%;
+}
+.tables table td span.vid{
+    margin: 0 0 0 3%;
+    display: block;
+    width: 97%;
+}
+.tables table td[colspan="2"] {
+	width: 30%;
+}
+
+.tables table td,
+.tables table th {
+	font-size: 25px !important;
+	color: #666666;
+	padding: 8px;
+	border: none;
+	background: 0 0;
+	text-align: left;
+	float: none;
+}
+.tables table th {
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.tables table th span{
+	color: #339933;
+}
+.tables table tbody td {
+	vertical-align: top;
+	height: 100%;
+}
+.tables table th.ed, .tables table th.price{
+	width: 20%;
+}
+.tables table tbody tr.sub td {
+	padding-top: 2px !important;
+}
+.tables table tbody tr.sub td div span {
+	padding-top: 0;
+}
+.tables table tbody tr.sub td div {
+	font-size: .85em;
+	border: 0;
+}
+.tables table tbody tr.sub td span.vid {
+	text-indent: 2em;
+}
+.tables table tbody td div {
+	display: table;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #ddd;
+}
+.tables table tbody tr:first-child td div {
+	border-top: 0px;
+}
+.tables table tbody td span{
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+    padding-top: 10px;
+}
+
+.tables table tbody td,
+.tables table th {
+	border-right: 1px solid #ddd;
+}
+
+.tables table tr td:last-child,
+.tables table tr th:last-child {
+	border-right: 0;
+}
+
+.tables table tr:last-child td div {
+	margin-bottom: 8px;
+}
+
+.tables table tfoot th span,
+.tables table thead th span {
+	background-color: transparent;
+	font-weight: normal;
+	color: #339933;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 28px;
+}
+.tables table td.text-center, .tables table th.text-center {
+	text-align: center;
+}
+
+@media ( max-width: 1199px ) {
+	.tables table {
+		width: inherit;
+	}
+	.tables h2{
+		font-size: 25px !important;
+		padding: 14 0 6px;
+	}
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 16px;
+	}
+	.tables table td,
+	.tables table th {
+		font-size: 18px !important;
+	}
+	
+	.tables table tfoot th,
+	.tables table thead th  {
+		font-size: 24px !important;
+	}
+	.tablepress-table-description {
+		font-size: 18px;	
+	}
+	.tablepress-table-description:before {
+		font-size: 20px;
+		padding: 0 0 10px;
+	}
+}
+
+@media ( max-width: 991px ) {
+	.tables h2{
+		font-size: 25px !important;
+		padding: 10 0 5px;
+	}
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 14px;
+	}
+	.tables table td,
+	.tables table th {
+		font-size: 16px !important;
+		padding: 5px !important;
+	}
+	
+	.tables table tfoot th,
+	.tables table thead th  {
+		font-size: 17px !important;
+	}
+
+	.tablepress-table-description:before {
+		font-size: 18px;
+		padding: 0 0 10px;
+	}
+}
+@media ( max-width: 450px ) {
+	.tablepress-table-description {
+		padding: 0 0 1em;
+		font-size: 12px;
+	}
+	.tables table tfoot th,
+	.tables table thead th  {
+		font-size: 15px !important;
+	}
+	.tables table td,
+	.tables table th {
+		font-size: 12px !important;
+		padding: 3px !important;
+	}
+}
